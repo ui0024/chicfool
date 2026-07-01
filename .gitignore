@@ -1,0 +1,13 @@
+.DS_Store
+*.zip
+
+# Draft ecommerce files, kept locally until the shop is ready.
+legal.html
+returns.html
+thanks.html
+stripe-payment-links.md
+launch-checklist.md
+
+# Logo source/reference files. The cropped public logo is tracked.
+assets/chic-fool-logo-reference-transparent.png
+assets/chic-fool-logo-reference.jpg
