@@ -160,36 +160,177 @@
     .panel-idea p{font-size:clamp(.94rem,4vw,1rem);line-height:2.05;}
   }
 
-  /* section heads */
-  .sec{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.4rem) clamp(2rem,5vw,3.5rem);}
-  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:clamp(1.6rem,4vw,2.6rem);border-bottom:1px solid var(--hairline);padding-bottom:1rem;}
-  .sec-head h2{font-family:var(--type);font-weight:400;font-size:clamp(1.2rem,3.4vw,1.9rem);letter-spacing:.01em;}
-  .sec-head .all{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);}
-  .sec-head .all:hover{color:var(--ink);}
-
-  /* product grid */
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.4vw,1.8rem) clamp(.8rem,1.8vw,1.4rem);}
-  @media (max-width:900px){.grid{grid-template-columns:repeat(3,1fr);}}
-  @media (max-width:620px){.grid{grid-template-columns:repeat(2,1fr);}}
-  .card{display:flex;flex-direction:column;}
-  .thumb{position:relative;width:100%;aspect-ratio:3/4;background:var(--card);overflow:hidden;border:1px solid var(--hairline);}
-  .thumb .ph{position:absolute;inset:0;transition:opacity .6s var(--ease);}
-  .thumb .ph.b{opacity:0;}
-  .card:hover .thumb .ph.b{opacity:1;}
-  .card:hover .thumb .ph.a{opacity:0;}
-  .thumb .mark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--type);font-size:.7rem;letter-spacing:.3em;color:rgba(22,18,13,.16);text-transform:uppercase;pointer-events:none;}
-  .meta{padding:.7rem .1rem 0;}
-  .meta .name{font-size:.74rem;letter-spacing:.02em;line-height:1.4;}
-  .meta .note{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-top:.25rem;}
-  .buy{
-    display:inline-flex;align-items:center;justify-content:center;
-    margin-top:.72rem;padding:.42rem .72rem;border:1px solid var(--ink);
-    font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;
-    transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);
+  /* commerce sections */
+  .sec{
+    padding:4.8rem clamp(1rem,4vw,2.4rem) 4.2rem;
   }
-  .buy:hover{background:var(--ink);color:var(--paper);}
-  .buy--disabled{
-    pointer-events:none;color:var(--ink-faint);border-color:var(--hairline);
+  .ec-section{
+    border-bottom:1px solid var(--hairline);
+  }
+  .ec-section--permanent{
+    background:linear-gradient(180deg,var(--paper) 0%,var(--paper-deep) 100%);
+  }
+  .sec-head{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;
+    margin-bottom:1.4rem;border-bottom:1px solid var(--hairline);padding-bottom:1rem;
+  }
+  .sec-kicker{
+    font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-faint);
+    margin-bottom:.32rem;
+  }
+  .sec-head h2{
+    font-family:var(--mincho);font-weight:500;font-size:2rem;letter-spacing:.08em;line-height:1.25;
+  }
+  .sec-head .all{
+    font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
+    text-align:right;
+  }
+  .sec-copy{
+    max-width:44rem;margin:0 0 2rem auto;
+    font-family:var(--mincho);font-size:.95rem;line-height:2;letter-spacing:.06em;color:var(--ink-soft);
+  }
+  .seasonal-flow{
+    display:grid;grid-template-columns:minmax(15rem,22rem) minmax(0,1fr);gap:1.2rem;
+    align-items:stretch;
+  }
+  .theme-list{
+    display:grid;gap:.75rem;align-content:start;
+  }
+  .theme-button{
+    width:100%;min-height:5.4rem;padding:1rem 1.05rem;text-align:left;
+    background:rgba(255,255,255,.28);border:1px solid var(--hairline);
+    color:var(--ink);font-family:var(--mono);cursor:pointer;
+    transition:background .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease);
+  }
+  .theme-button:hover,.theme-button.is-active{
+    background:var(--paper);border-color:rgba(22,18,13,.48);transform:translateY(-1px);
+  }
+  .theme-button .num{
+    display:block;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);
+    margin-bottom:.32rem;
+  }
+  .theme-button .title{
+    display:block;font-family:var(--mincho);font-size:1.2rem;letter-spacing:.08em;line-height:1.35;
+  }
+  .theme-button .note{
+    display:block;font-size:.62rem;letter-spacing:.12em;color:var(--ink-soft);margin-top:.32rem;
+  }
+  .theme-detail{
+    min-height:27rem;background:var(--card);border:1px solid var(--hairline);
+    display:grid;grid-template-columns:minmax(15rem,.76fr) minmax(0,1.24fr);gap:1rem;padding:1rem;
+  }
+  .theme-visual{
+    position:relative;min-height:25rem;border:1px solid var(--hairline);overflow:hidden;background:var(--paper);
+  }
+  .theme-visual .mark{
+    position:absolute;left:1.2rem;bottom:1rem;font-family:var(--type);font-size:2.4rem;line-height:1;
+    color:rgba(22,18,13,.18);
+  }
+  .theme-body{
+    padding:1rem .6rem .4rem;
+  }
+  .flow-line{
+    display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:1.2rem;
+  }
+  .flow-chip{
+    border:1px solid var(--hairline);background:var(--paper);padding:.34rem .62rem;
+    font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .flow-arrow{font-family:var(--type);color:var(--ink-faint);}
+  .theme-body h3{
+    font-family:var(--mincho);font-weight:500;font-size:1.85rem;line-height:1.35;letter-spacing:.08em;
+  }
+  .theme-body p{
+    margin-top:.8rem;font-family:var(--mincho);font-size:.92rem;line-height:1.95;letter-spacing:.05em;color:var(--ink-soft);
+  }
+  .piece-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1.3rem;
+  }
+  .piece-card{
+    min-height:11.5rem;display:flex;flex-direction:column;justify-content:flex-end;
+    border:1px solid var(--hairline);background:var(--paper);padding:.75rem;position:relative;overflow:hidden;
+  }
+  .piece-card::before{
+    content:"";position:absolute;inset:0;background:var(--piece-bg);opacity:.86;
+  }
+  .piece-card strong,.piece-card span{position:relative;z-index:1;}
+  .piece-card strong{font-size:.76rem;line-height:1.45;}
+  .piece-card span{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-top:.25rem;}
+  .swipe-shop{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;
+  }
+  .swipe-item{
+    min-width:0;border:1px solid var(--hairline);background:rgba(245,243,238,.68);
+  }
+  .swipe-head{
+    min-height:5.9rem;padding:1rem;border-bottom:1px solid var(--hairline);
+    display:flex;align-items:flex-end;justify-content:space-between;gap:.75rem;
+  }
+  .swipe-head h3{
+    font-family:var(--type);font-weight:400;font-size:1.35rem;line-height:1.15;
+  }
+  .swipe-head span{
+    font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;
+  }
+  .swipe-track{
+    display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+  .swipe-track::-webkit-scrollbar{height:6px;}
+  .swipe-track::-webkit-scrollbar-thumb{background:var(--hairline);}
+  .step-card{
+    flex:0 0 100%;min-height:22rem;scroll-snap-align:start;
+    display:flex;flex-direction:column;justify-content:space-between;gap:1.4rem;
+    padding:1rem;
+  }
+  .step-visual{
+    position:relative;min-height:13.5rem;border:1px solid var(--hairline);background:var(--card);overflow:hidden;
+  }
+  .step-visual::after{
+    content:attr(data-mark);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:var(--type);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;
+    color:rgba(22,18,13,.18);
+  }
+  .step-text .step-label{
+    font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  .step-text h4{
+    margin-top:.25rem;font-family:var(--mincho);font-weight:500;font-size:1.15rem;letter-spacing:.06em;
+  }
+  .step-text p{
+    margin-top:.45rem;font-family:var(--mincho);font-size:.88rem;line-height:1.8;letter-spacing:.05em;color:var(--ink-soft);
+  }
+  .swipe-dots{
+    display:flex;gap:.3rem;padding:0 1rem 1rem;
+  }
+  .swipe-dots span{
+    width:2rem;height:1px;background:var(--hairline);
+  }
+  .swipe-dots span:first-child{background:var(--ink-soft);}
+
+  @media (max-width:980px){
+    .seasonal-flow{grid-template-columns:1fr;}
+    .theme-list{grid-template-columns:repeat(3,1fr);}
+    .theme-detail{grid-template-columns:1fr;}
+    .theme-visual{min-height:18rem;}
+    .swipe-shop{grid-template-columns:1fr;}
+    .step-card{min-height:20rem;}
+  }
+  @media (max-width:680px){
+    .sec{padding:3.2rem 1rem;}
+    .sec-head{align-items:flex-start;flex-direction:column;gap:.65rem;}
+    .sec-head h2{font-size:1.72rem;}
+    .sec-copy{margin:0 0 1.4rem;max-width:none;font-size:.9rem;}
+    .theme-list{grid-template-columns:1fr;}
+    .theme-button{min-height:auto;}
+    .theme-detail{padding:.75rem;}
+    .theme-visual{min-height:14rem;}
+    .theme-visual .mark{font-size:1.8rem;}
+    .theme-body{padding:.55rem 0 0;}
+    .theme-body h3{font-size:1.55rem;}
+    .piece-grid{grid-template-columns:1fr;gap:.6rem;}
+    .piece-card{min-height:8.8rem;}
+    .swipe-head{min-height:auto;align-items:flex-start;flex-direction:column;}
   }
 
   /* social + footer */
@@ -245,12 +386,12 @@
     <div class="bar-bg"></div>
     <nav>
       <a href="#top">Home</a>
-      <a href="#original">Preview</a>
-      <a href="#archive" class="hide-sm">Archive</a>
+      <a href="#seasonal">Seasonal</a>
+      <a href="#permanent" class="hide-sm">Permanent</a>
       <a href="#contact" class="hide-sm">Contact</a>
     </nav>
     <div class="util">
-      <a href="#contact">Launch note</a>
+      <a href="#seasonal">EC preview</a>
     </div>
   </header>
 
@@ -270,7 +411,7 @@
   <!-- page 2 : store -->
   <main class="store">
     <div class="campaign">
-      <a class="panel" href="#original" aria-label="SS26 campaign">
+      <a class="panel" href="#seasonal" aria-label="SS26 campaign">
         <div class="ph" data-ph="0"></div>
         <div class="cap"><div class="k">SS26 — first drop</div><div class="t">Beautifully,<br>foolishly.</div></div>
         <div class="panel-idea">
@@ -281,20 +422,31 @@
       </a>
     </div>
 
-    <section class="sec" id="original">
+    <section class="sec ec-section" id="seasonal">
       <div class="sec-head">
-        <h2>Collection Preview</h2>
-        <span class="all">Soon</span>
+        <div>
+          <p class="sec-kicker">Seasonal pieces</p>
+          <h2>季節物</h2>
+        </div>
+        <span class="all">Theme → Clothing</span>
       </div>
-      <div class="grid" id="grid-original"></div>
+      <p class="sec-copy">季節ごとの記憶や空気をテーマとして選び、そのテーマに紐づく服を見ていくクリック型の構成です。</p>
+      <div class="seasonal-flow">
+        <div class="theme-list" id="seasonal-themes" aria-label="季節物のテーマ"></div>
+        <div class="theme-detail" id="seasonal-detail" aria-live="polite"></div>
+      </div>
     </section>
 
-    <section class="sec" id="archive">
+    <section class="sec ec-section ec-section--permanent" id="permanent">
       <div class="sec-head">
-        <h2>Archive Mood</h2>
-        <span class="all">Objects</span>
+        <div>
+          <p class="sec-kicker">Permanent pieces</p>
+          <h2>通年物</h2>
+        </div>
+        <span class="all">Clothing → Fabric → Process</span>
       </div>
-      <div class="grid" id="grid-archive"></div>
+      <p class="sec-copy">通年で展開する服は、ひとつの商品を横にスワイプしながら「服」「生地」「制作過程」の順に深く見られる構成です。</p>
+      <div class="swipe-shop" id="permanent-swipes" aria-label="通年物の商品"></div>
     </section>
 
     <div class="social"><span aria-label="Instagram">Instagram — @chicfool</span></div>
@@ -322,49 +474,127 @@
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var body = document.body;
 
-    /* ---------- product placeholders ---------- */
+    /* ---------- ecommerce preview ---------- */
     function phStyle(i, variant){
       var a = (i*47) % 360;
       var base = variant ? 'linear-gradient('+(a+24)+'deg,#E7E2D8,#D6CFC1)' : 'linear-gradient('+a+'deg,#EEEAE2,#E0D9CC)';
       return base;
     }
-    var ORIGINAL = [
-      {n:'Look 01', note:'Original preview'},
-      {n:'Look 02', note:'Original preview'},
-      {n:'Look 03', note:'Original preview'},
-      {n:'Look 04', note:'Original preview'},
-      {n:'Look 05', note:'Original preview'},
-      {n:'Look 06', note:'Original preview'},
-      {n:'Look 07', note:'Original preview'},
-      {n:'Look 08', note:'Original preview'}
+    var SEASONAL = [
+      {
+        theme:'夏の記憶',
+        note:'heat / after school',
+        copy:'汗、夕立、プールバッグ。夏だけに立ち上がる景色をテーマに、軽さと余白のある服へ落とし込みます。',
+        mark:'Summer',
+        pieces:[
+          {name:'Memory shirt', note:'short sleeve'},
+          {name:'After-rain tee', note:'cotton jersey'},
+          {name:'Pool side pants', note:'easy fit'}
+        ]
+      },
+      {
+        theme:'冬の部屋',
+        note:'room / blanket',
+        copy:'暖房の音、乾いた窓、古い布団。閉じた季節の安心感と孤独感を、重ね着できる服に変換します。',
+        mark:'Winter',
+        pieces:[
+          {name:'Quiet jacket', note:'light outer'},
+          {name:'Blanket hoodie', note:'brushed back'},
+          {name:'Cold morning pants', note:'wide taper'}
+        ]
+      },
+      {
+        theme:'行事の残像',
+        note:'festival / photo',
+        copy:'運動会、遠足、写真の日。大げさではない特別な一日を、色・ポケット・シルエットで記録します。',
+        mark:'Event',
+        pieces:[
+          {name:'Class photo vest', note:'layer piece'},
+          {name:'Field trip bag', note:'small goods'},
+          {name:'Ribbon shirt', note:'limited color'}
+        ]
+      }
     ];
-    var ARCHIVE = [
-      {n:'Object 01', note:'Memory object'},
-      {n:'Object 02', note:'Memory object'},
-      {n:'Object 03', note:'Memory object'},
-      {n:'Object 04', note:'Memory object'},
-      {n:'Object 05', note:'Memory object'},
-      {n:'Object 06', note:'Memory object'},
-      {n:'Object 07', note:'Memory object'},
-      {n:'Object 08', note:'Memory object'}
-    ];
-    function render(targetId, items){
-      var wrap = document.getElementById(targetId);
-      var html = items.map(function(it,i){
-        return '<article class="card">'+
-          '<div class="thumb">'+
-            '<div class="ph a" style="background:'+phStyle(i,0)+'"></div>'+
-            '<div class="ph b" style="background:'+phStyle(i,1)+'"></div>'+
-            '<div class="mark">Chic Fool</div>'+
-          '</div>'+
-          '<div class="meta"><div class="name">'+it.n+'</div>'+
-          '<div class="note">'+it.note+'</div></div>'+
+    function renderSeasonal(activeIndex){
+      var list = document.getElementById('seasonal-themes');
+      var detail = document.getElementById('seasonal-detail');
+      if(!list || !detail) return;
+      list.innerHTML = SEASONAL.map(function(item,i){
+        return '<button class="theme-button'+(i===activeIndex?' is-active':'')+'" type="button" data-theme="'+i+'">'+
+          '<span class="num">Theme '+String(i+1).padStart(2,'0')+'</span>'+
+          '<span class="title">'+item.theme+'</span>'+
+          '<span class="note">'+item.note+'</span>'+
+        '</button>';
+      }).join('');
+      var active = SEASONAL[activeIndex];
+      var pieceHtml = active.pieces.map(function(piece,i){
+        return '<article class="piece-card" style="--piece-bg:'+phStyle(activeIndex*3+i, i%2)+'">'+
+          '<strong>'+piece.name+'</strong><span>'+piece.note+'</span>'+
         '</article>';
       }).join('');
-      wrap.innerHTML = html;
+      detail.innerHTML =
+        '<div class="theme-visual" style="background:'+phStyle(activeIndex,0)+'"><div class="mark">'+active.mark+'</div></div>'+
+        '<div class="theme-body">'+
+          '<div class="flow-line"><span class="flow-chip">Theme</span><span class="flow-arrow">→</span><span class="flow-chip">Clothing</span></div>'+
+          '<h3>'+active.theme+'</h3>'+
+          '<p>'+active.copy+'</p>'+
+          '<div class="piece-grid">'+pieceHtml+'</div>'+
+        '</div>';
+      list.querySelectorAll('.theme-button').forEach(function(button){
+        button.addEventListener('click', function(){
+          renderSeasonal(Number(button.getAttribute('data-theme')));
+        });
+      });
     }
-    render('grid-original', ORIGINAL);
-    render('grid-archive', ARCHIVE);
+    renderSeasonal(0);
+
+    var PERMANENT = [
+      {
+        name:'aaa',
+        note:'core shirt',
+        steps:[
+          {label:'Clothing', title:'通年で着られる基準の服', body:'季節に左右されず、最初に手に取れる一枚。余白のある形で、重ね着にも単体にも合わせます。', mark:'Clothing'},
+          {label:'Fabric', title:'肌に残る綿の感覚', body:'洗いをかけたコットンを想定。幼少期の衣類に近い、乾いたやわらかさを残します。', mark:'Fabric'},
+          {label:'Process', title:'記憶を削り出す制作', body:'写真、言葉、当時の質感を拾い、形・縫い目・ラベルに変換していきます。', mark:'Process'}
+        ]
+      },
+      {
+        name:'base pants',
+        note:'year round',
+        steps:[
+          {label:'Clothing', title:'毎日に沈むパンツ', body:'主張を抑えつつ、ブランドの思想が残る一本。トップスの季節感を受け止めます。', mark:'Clothing'},
+          {label:'Fabric', title:'使い込んだ紙のような布', body:'少し乾いた表面と、軽いシワを残す生地感。記録物のような印象を狙います。', mark:'Fabric'},
+          {label:'Process', title:'穿く人の癖を残す設計', body:'ポケット位置、丈、膝の動き方を整え、日常の動作に沿うように仕立てます。', mark:'Process'}
+        ]
+      },
+      {
+        name:'memory bag',
+        note:'small goods',
+        steps:[
+          {label:'Clothing', title:'服と一緒に持つ記憶の器', body:'通年で使える小物として、テーマ服と日常服の間をつなぎます。', mark:'Object'},
+          {label:'Fabric', title:'軽い帆布と裏地', body:'外側は少し硬く、内側は柔らかい。外に見せる自分と内側の記憶を分けます。', mark:'Fabric'},
+          {label:'Process', title:'ラベルと余白の調整', body:'持ったときに言葉が強く出すぎないよう、印字と配置の静けさを見ます。', mark:'Process'}
+        ]
+      }
+    ];
+    function renderPermanent(){
+      var wrap = document.getElementById('permanent-swipes');
+      if(!wrap) return;
+      wrap.innerHTML = PERMANENT.map(function(item,itemIndex){
+        var cards = item.steps.map(function(step,stepIndex){
+          return '<section class="step-card">'+
+            '<div class="step-visual" data-mark="'+step.mark+'" style="background:'+phStyle(itemIndex*4+stepIndex,stepIndex%2)+'"></div>'+
+            '<div class="step-text"><div class="step-label">'+step.label+'</div><h4>'+step.title+'</h4><p>'+step.body+'</p></div>'+
+          '</section>';
+        }).join('');
+        return '<article class="swipe-item">'+
+          '<div class="swipe-head"><h3>'+item.name+'</h3><span>'+item.note+' / swipe</span></div>'+
+          '<div class="swipe-track">'+cards+'</div>'+
+          '<div class="swipe-dots" aria-hidden="true"><span></span><span></span><span></span></div>'+
+        '</article>';
+      }).join('');
+    }
+    renderPermanent();
 
     // campaign panel placeholders
     document.querySelectorAll('.panel .ph').forEach(function(el,i){
