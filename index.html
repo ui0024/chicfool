@@ -4,21 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chic Fool - store</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F5F3EE;
-    --paper-deep:#ECE7DC;
-    --card:#E8E1D5;
-    --ink:#15110C;
-    --ink-soft:#61594F;
-    --ink-faint:#9B9286;
-    --line:#DDD6CA;
-    --line-dark:#BFB6A9;
-    --type:'Special Elite','Courier Prime',monospace;
-    --mono:'Courier Prime',ui-monospace,monospace;
+    --paper:#F6F4EF;
+    --paper-deep:#ECE7DD;
+    --card:#E8E2D7;
+    --ink:#1C1612;
+    --ink-soft:#665D52;
+    --ink-faint:#A39B90;
+    --line:#DDD6CB;
+    --line-dark:#BFB5A7;
+    --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    --mono:"Courier New",Courier,ui-monospace,monospace;
     --ease:cubic-bezier(.22,.61,.36,1);
     --head-h:64px;
   }
@@ -27,7 +24,7 @@
   html{scroll-behavior:smooth;}
   body{
     min-height:100vh;background:var(--paper);color:var(--ink);
-    font-family:var(--mono);line-height:1.5;-webkit-font-smoothing:antialiased;
+    font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;
   }
   body.locked{overflow:hidden;}
   ::selection{background:var(--ink);color:var(--paper);}
@@ -43,12 +40,16 @@
     border-bottom:1px solid var(--line);backdrop-filter:blur(12px);
   }
   .brand{
-    font-family:var(--type);font-size:clamp(1.15rem,2vw,1.55rem);letter-spacing:.02em;
+    display:inline-flex;align-items:center;width:clamp(9.5rem,13vw,14rem);
+  }
+  .brand img{
+    display:block;width:100%;height:auto;
   }
   .nav,.tools{display:flex;align-items:center;gap:clamp(.8rem,2vw,1.35rem);}
   .nav{justify-self:center;}
   .tools{justify-self:end;}
   .nav a,.tools button,.tools a{
+    font-family:var(--mono);
     font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);
     transition:color .25s var(--ease);
   }
@@ -56,15 +57,16 @@
 
   main{padding:clamp(3.5rem,7vw,6rem) clamp(1rem,3vw,2rem) 4rem;}
   .shop-head{
-    display:flex;align-items:end;justify-content:space-between;gap:1rem;
-    max-width:1600px;margin:0 auto clamp(1.5rem,3vw,2.5rem);
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    max-width:1600px;margin:0 auto clamp(1.25rem,2.2vw,2rem);
   }
   .shop-title{
-    font-family:var(--type);font-weight:400;font-size:clamp(3rem,8vw,8.5rem);
-    line-height:.86;letter-spacing:.01em;
+    font-family:var(--mono);font-weight:400;font-size:.68rem;
+    line-height:1;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);
   }
   .filters{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;justify-content:flex-end;}
   .filter{
+    font-family:var(--mono);
     min-height:2rem;padding:.36rem .72rem;border:1px solid var(--line);
     font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
     transition:border-color .25s var(--ease),background .25s var(--ease),color .25s var(--ease);
@@ -87,13 +89,14 @@
     content:"";position:absolute;inset:0;background:var(--bg);opacity:.96;
     transition:transform .7s var(--ease),opacity .7s var(--ease);
   }
-  .thumb::after{
-    content:"Chic Fool";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    font-family:var(--type);font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
-    color:rgba(21,17,12,.14);
+  .thumb-logo{
+    position:absolute;inset:0;z-index:1;
+    background:url("assets/chicfool-line-logo.png") center/42% auto no-repeat;
+    opacity:.16;
   }
   .product:hover .thumb::before{transform:scale(1.025);opacity:1;}
   .badge{
+    font-family:var(--mono);
     position:absolute;left:.75rem;top:.75rem;z-index:2;background:var(--ink);color:var(--paper);
     padding:.28rem .5rem;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;
   }
@@ -101,10 +104,11 @@
     display:grid;grid-template-columns:1fr auto;gap:.35rem .8rem;align-items:start;
   }
   .name{
-    font-family:var(--type);font-size:clamp(1.05rem,1.8vw,1.42rem);line-height:1.05;
+    font-size:clamp(.96rem,1.25vw,1.12rem);font-weight:400;line-height:1.2;
   }
-  .price{font-size:.68rem;letter-spacing:.08em;color:var(--ink-soft);white-space:nowrap;}
+  .price{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--ink-soft);white-space:nowrap;}
   .line{
+    font-family:var(--mono);
     grid-column:1/-1;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
   }
 
@@ -129,7 +133,7 @@
     padding:0 1rem;border-bottom:1px solid var(--line);
   }
   .panel-head h2{
-    font-family:var(--type);font-size:1.15rem;font-weight:400;
+    font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
   }
   .close{
     width:2.5rem;height:2.5rem;border:1px solid var(--line);font-size:1.25rem;line-height:1;
@@ -141,26 +145,30 @@
   }
   .detail-image::before{content:"";position:absolute;inset:0;background:var(--bg);}
   .detail-image::after{
-    content:attr(data-label);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    font-family:var(--type);font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
-    color:rgba(21,17,12,.14);
+    content:"";position:absolute;inset:0;
+    background:url("assets/chicfool-line-logo.png") center/44% auto no-repeat;
+    opacity:.16;
   }
   .detail-meta{padding:1rem 0 0;}
-  .detail-meta h3{font-family:var(--type);font-size:2rem;font-weight:400;line-height:1;}
+  .detail-meta h3{font-size:1.6rem;font-weight:400;line-height:1.15;}
   .detail-row{
+    font-family:var(--mono);
     display:flex;justify-content:space-between;gap:1rem;margin-top:.75rem;
     font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
   }
   .option-label{
+    font-family:var(--mono);
     display:block;margin:1.4rem 0 .55rem;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);
   }
   .sizes{display:flex;gap:.5rem;flex-wrap:wrap;}
   .size{
+    font-family:var(--mono);
     min-width:3.3rem;height:2.35rem;border:1px solid var(--line);font-size:.68rem;
     letter-spacing:.16em;text-transform:uppercase;
   }
   .size.is-active{border-color:var(--ink);background:var(--ink);color:var(--paper);}
   .add{
+    font-family:var(--mono);
     width:100%;height:3.25rem;margin-top:1.4rem;background:var(--ink);color:var(--paper);
     font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
   }
@@ -173,26 +181,29 @@
   }
   .bag-thumb{aspect-ratio:3/4;background:var(--card);border:1px solid var(--line);}
   .bag-thumb div{width:100%;height:100%;background:var(--bg);}
-  .bag-name{font-family:var(--type);font-size:1.05rem;line-height:1.1;}
-  .bag-sub{margin-top:.2rem;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);}
-  .bag-price{font-size:.65rem;white-space:nowrap;color:var(--ink-soft);}
+  .bag-name{font-size:1rem;line-height:1.2;}
+  .bag-sub{font-family:var(--mono);margin-top:.2rem;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);}
+  .bag-price{font-family:var(--mono);font-size:.65rem;white-space:nowrap;color:var(--ink-soft);}
   .qty{display:flex;align-items:center;gap:.55rem;margin-top:.8rem;}
   .qty button{width:1.7rem;height:1.7rem;border:1px solid var(--line);}
-  .empty{padding:2rem 0;font-family:var(--type);font-size:1.4rem;color:var(--ink-soft);}
+  .empty{padding:2rem 0;font-size:1rem;color:var(--ink-soft);}
   .summary{
     margin-top:auto;padding:1rem;border-top:1px solid var(--line);
   }
   .summary-row{
+    font-family:var(--mono);
     display:flex;justify-content:space-between;margin-bottom:1rem;
     font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
   }
   .checkout{
+    font-family:var(--mono);
     width:100%;height:3.25rem;border:1px solid var(--ink);background:var(--ink);color:var(--paper);
     font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
   }
   .checkout:disabled{background:transparent;color:var(--ink-faint);border-color:var(--line);cursor:not-allowed;}
 
   footer{
+    font-family:var(--mono);
     padding:2rem clamp(1rem,3vw,2rem);border-top:1px solid var(--line);
     display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
     font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
@@ -206,12 +217,12 @@
   }
   @media (max-width:680px){
     .site-head{grid-template-columns:1fr auto;height:58px;}
-    .brand{font-size:1.1rem;}
+    .brand{width:9.3rem;}
     .nav{display:none;}
     .tools a{display:none;}
     main{padding:2.8rem .85rem 3rem;}
     .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.15rem .7rem;}
-    .shop-title{font-size:clamp(2.8rem,17vw,5.5rem);}
+    .shop-title{font-size:.62rem;}
     .name{font-size:1.02rem;}
     .price{grid-column:1/-1;}
     .panel{width:100%;}
@@ -220,7 +231,9 @@
 </head>
 <body>
   <header class="site-head">
-    <a class="brand" href="#shop" aria-label="Chic Fool">Chic Fool</a>
+    <a class="brand" href="#shop" aria-label="Chic Fool">
+      <img src="assets/chicfool-line-logo.png" alt="Chic Fool">
+    </a>
     <nav class="nav" aria-label="Store navigation">
       <a href="#shop">Shop</a>
       <a href="privacy.html">Privacy</a>
@@ -310,6 +323,7 @@
       grid.innerHTML = visible.map(function(product){
         return '<button class="product" type="button" data-id="'+product.id+'">'+
           '<span class="thumb" style="--bg:'+productBg(product)+'">'+
+            '<span class="thumb-logo" aria-hidden="true"></span>'+
             (product.status === 'sold' ? '<span class="badge">Sold out</span>' : '')+
           '</span>'+
           '<span class="meta">'+
@@ -345,7 +359,7 @@
       var wrap = document.getElementById('productDetail');
       var disabled = selectedProduct.status === 'sold';
       wrap.innerHTML =
-        '<div class="detail-image" data-label="Chic Fool" style="--bg:'+productBg(selectedProduct)+'"></div>'+
+        '<div class="detail-image" style="--bg:'+productBg(selectedProduct)+'"></div>'+
         '<div class="detail-meta">'+
           '<h3>'+selectedProduct.name+'</h3>'+
           '<div class="detail-row"><span>'+selectedProduct.line+'</span><span>'+yen(selectedProduct.price)+'</span></div>'+
